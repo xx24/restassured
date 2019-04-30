@@ -6,6 +6,8 @@ import com.demo.util.ExcelUtil;
 import com.demo.util.JsonUtil;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.lang.reflect.Method;
 import java.util.Map;
 
 public class TestByExcel {
@@ -21,13 +23,14 @@ public class TestByExcel {
     public void operationExcel(String sheetName) throws Exception{
         testStep = ExcelUtil.getFirstRowContainsCaseId(sheetName, sheetName);
         testLastStep = ExcelUtil.getLastRowContainsCaseId(sheetName, sheetName, testStep);
-
-        for (; testStep <= testLastStep; testStep++) {
+        ApiHelper apiHelper = new ApiHelper();
+        for (; testStep < testLastStep; testStep++) {
             keyword = ExcelUtil.getCellData(sheetName, testStep, Constants.COL_METHOD);
             url = ExcelUtil.getCellData(sheetName, testStep, Constants.COL_URL);
             data = JsonUtil.getJsonDataMap(sheetName, testStep);
-            expect = JsonUtil.getJsonDataString(sheetName, testStep);
-            ApiHelper.class.getMethod(keyword).invoke(url,data);
+          Method method =  ApiHelper.class.getMethod(keyword,String.class,Map.class);
+                  method.invoke(apiHelper,url,data);
+
 
         }
     }

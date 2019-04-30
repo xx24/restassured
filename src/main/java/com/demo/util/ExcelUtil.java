@@ -89,12 +89,12 @@ public class ExcelUtil {
 
     public static int getLastRowContainsCaseId(String sheetName, String testCaseName, int firstStep) {
         try {
-            for (int i = firstStep; i <= ExcelUtil.getRowCount(sheetName); i++) {
+            for (int i = firstStep; i < ExcelUtil.getRowCount(sheetName); i++) {
                 if (!testCaseName.equalsIgnoreCase(ExcelUtil.getCellData(sheetName, i, Constants.COL_CASENAME))) {
                     return i;
                 }
             }
-            return ExcelUtil.getRowCount(sheetName);
+            return ExcelUtil.getRowCount(sheetName)+1;
         } catch (Exception e) {
             e.printStackTrace();
             return 0;

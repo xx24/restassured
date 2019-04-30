@@ -18,27 +18,27 @@ public class TestBySuite {
 
     public static void main(String args[]) {
         XmlSuite suite = new XmlSuite();
+        suite.setName("SUITE");
         ExcelUtil.setExcelFile(Constants.PATH_EXCEL);
         int sheetCount = ExcelUtil.getRowCount(Constants.SHEET_SUITNAME);
         for (int sheetNo = 1; sheetNo <= sheetCount; sheetNo++) {
             caseName = ExcelUtil.getCellData(Constants.SHEET_SUITNAME, sheetNo, Constants.COL_CASENAME);
             caseRunFlag = ExcelUtil.getCellData(Constants.SHEET_SUITNAME, sheetNo, Constants.COL_RUNFLAG);
             if (caseRunFlag.equalsIgnoreCase("y")) {
-                XmlTest test = new XmlTest();
-                suite.addTest(test);
+                XmlTest test = new XmlTest(suite);
                 test.setName(caseName);
                 Map<String, String> parameters = new HashMap<String, String>();
                 parameters.put("sheetName", caseName);
 //                parameters.put("testCaseNo", String.valueOf(sheetNo));
                 test.setParameters(parameters);
-                List<XmlClass>classes=new ArrayList<XmlClass>();
-                classes.add(new XmlClass(Constants.PATH_TESTBYEXCEL));
-                test.setClasses(classes);
+                List<XmlClass> classes = new ArrayList<XmlClass>();
+                classes.add(new XmlClass("com.demo.test.TestByExcel"));
+                test.setXmlClasses(classes);
             }
         }
-        List<XmlSuite>suites=new ArrayList<XmlSuite>();
+        List<XmlSuite> suites = new ArrayList<XmlSuite>();
         suites.add(suite);
-        TestNG testNG=new TestNG();
+        TestNG testNG = new TestNG();
         testNG.setXmlSuites(suites);
         testNG.run();
     }

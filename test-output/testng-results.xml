@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default Suite" duration-ms="0" started-at="2019-04-30T09:33:29Z" finished-at="2019-04-30T09:33:29Z">
+  <suite name="SUITE" duration-ms="62847" started-at="2019-04-30T15:27:14Z" finished-at="2019-04-30T15:28:17Z">
     <groups>
     </groups>
-  </suite> <!-- Default Suite -->
+    <test name="zhihu" duration-ms="62847" started-at="2019-04-30T15:27:14Z" finished-at="2019-04-30T15:28:17Z">
+      <class name="com.demo.test.TestByExcel">
+        <test-method status="PASS" signature="operationExcel(java.lang.String)[pri:0, instance:com.demo.test.TestByExcel@74bf1791]" name="operationExcel" duration-ms="62771" started-at="2019-04-30T15:27:14Z" finished-at="2019-04-30T15:28:17Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[zhihu]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- operationExcel -->
+      </class> <!-- com.demo.test.TestByExcel -->
+    </test> <!-- zhihu -->
+  </suite> <!-- SUITE -->
 </testng-results>
