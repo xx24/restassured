@@ -29,7 +29,6 @@ public class TestBySuite {
                 test.setName(caseName);
                 Map<String, String> parameters = new HashMap<String, String>();
                 parameters.put("sheetName", caseName);
-//                parameters.put("testCaseNo", String.valueOf(sheetNo));
                 test.setParameters(parameters);
                 List<XmlClass> classes = new ArrayList<XmlClass>();
                 classes.add(new XmlClass("com.demo.test.TestByExcel"));
